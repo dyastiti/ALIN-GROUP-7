@@ -6,6 +6,13 @@ import matplotlib.pyplot as plt
 from io import BytesIO, StringIO
 import html
 
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    import os
+    os.system("pip install matplotlib")
+    import matplotlib.pyplot as plt
+
 st.set_page_config(page_title="2D Transform + Composite Matrix (Preview SVG + Matplotlib)", layout="wide")
 
 def translation(tx, ty):
@@ -224,3 +231,4 @@ with col_plot:
     st.pyplot(fig)
 
 st.caption("SVG preview is intentionally lightweight (instant). Matplotlib provides a richer plot with grid and labels for analysis.")
+
